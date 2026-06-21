@@ -1,0 +1,6 @@
+{
+  "name": "Ethio Matric",
+  "description": "Full Suite Entrance Exam preparation helper for Ethiopian students featuring Mathematics, Biology, Aptitude, and English quizzes with explanations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
