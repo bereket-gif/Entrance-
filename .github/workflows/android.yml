@@ -17,14 +17,17 @@ jobs:
           
       - name: Get dependencies
         run: flutter pub get
+        # Pointing explicitly to the folder containing pubspec.yaml
         working-directory: ./flutter_project
         
       - name: Build APK
         run: flutter build apk --release
+        # Pointing explicitly to the folder containing the newly created android/ folder
         working-directory: ./flutter_project
         
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-release
+          # The path must match the structure where android/app/build.gradle exists
           path: flutter_project/build/app/outputs/flutter-apk/app-release.apk
