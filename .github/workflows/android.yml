@@ -5,29 +5,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
-          
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.x'
-          
-      - name: Get dependencies
-        run: flutter pub get
-        # Pointing explicitly to the folder containing pubspec.yaml
-        working-directory: ./flutter_project
-        
       - name: Build APK
-        run: flutter build apk --release
-        # Pointing explicitly to the folder containing the newly created android/ folder
-        working-directory: ./flutter_project
-        
-      - name: Upload APK
+        run: |
+          cd flutter_project
+          flutter pub get
+          flutter build apk --release
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-release
-          # The path must match the structure where android/app/build.gradle exists
-          path: flutter_project/build/app/outputs/flutter-apk/app-release.apk
+          path: flutter_project/build/app/outputs/flutter-apk/app-release-*.apk
