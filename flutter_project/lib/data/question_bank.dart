@@ -67,7 +67,7 @@ class QuestionBank {
       final a = i + 2;
       final b = i % 4 + 2;
       final val1 = a * b;
-      
+
       switch (i % 15) {
         case 0:
           list.add(_q("Mathematics", "If a rectangle has length $a m and width $b m, what is its area?", "$val1 m²", "${val1 + 5} m²", "${val1 - 3} m²", "${val1 * 2} m²", 0, "Area of a rectangle is length * width: $a x $b = $val1."));
@@ -146,7 +146,7 @@ class QuestionBank {
     // Add 75 dynamic Biology questions to reach 100
     final cellParts = ["Nucleus", "Ribosome", "Endoplasmic Reticulum", "Golgi Apparatus", "Vacuole"];
     final cellFunctions = ["storing DNA genetic blueprints", "synthesizing cellular proteins", "folding proteins/lipids", "packaging proteins", "storing cellular water and waste"];
-    
+
     for (var i = 1; i <= 75; i++) {
       final partIdx = i % cellParts.length;
       final label = cellParts[partIdx];
@@ -160,7 +160,7 @@ class QuestionBank {
           list.add(_q("Biology", "Which cellular organelle is responsible for $desc?", wrong1, label, wrong2, wrong3, 1, "The $label is specifically designed for $desc."));
           break;
         case 1:
-          list.add(_q("Biology", "What is the primary organic macro-component comprising the cell walls of plants (index $i)?", "Chitin", "Peptidoglycan", "Cellulose", "Glycogen", 2, "Plant cell walls are primarily reinforced by cellulose microfibrils."));
+          list.add(_q("Biology", "What is the primary organic macro-component comprising the cell walls of plants (index $i)?", "Chitin", "Peptidoglycan", "Cellulose", "Glygogen", 2, "Plant cell walls are primarily reinforced by cellulose microfibrils."));
           break;
         case 2:
           list.add(_q("Biology", "Which plant hormone is highly active in promoting fruit ripening (reference code $i)?", "Auxin", "Gibberellin", "Ethylene", "Cytokinin", 2, "Ethylene is a volatile gaseous hormone that accelerates ripening."));
@@ -204,7 +204,7 @@ class QuestionBank {
     for (var i = 1; i <= 75; i++) {
       final step = i % 4 + 2;
       final nextNum = 10 + i * step;
-      
+
       switch (i % 5) {
         case 0:
           list.add(_q("Aptitude", "Find the next pattern number in this series: 10, ${10 + step}, ${10 + 2 * step}, ${10 + 3 * step}, ?", "${nextNum - 1}", "$nextNum", "${nextNum + 1}", "${nextNum + step}", 1, "The pattern adds a fixed value of $step on each iteration."));
@@ -258,13 +258,13 @@ class QuestionBank {
       {"first": "ephemeral", "second": "brief", "third": "eternal"},
       {"first": "resolute", "second": "determined", "third": "wavering"}
     ];
-    
+
     for (var i = 1; i <= 75; i++) {
-      final trip = vocabSynonyms[i % vocabSynonyms.length]!;
+      final trip = vocabSynonyms[i % vocabSynonyms.length];
       final f = trip["first"]!;
       final s = trip["second"]!;
       final t = trip["third"]!;
-      
+
       switch (i % 5) {
         case 0:
           list.add(_q("English", "What is the primary synonym for the vocabulary term '$f'?", s, t, "unimportant", "fragile", 0, "The word '$f' represents a state of being $s."));
@@ -330,7 +330,7 @@ class QuestionBank {
     list.add(_q("Physics", "Which wave property describes is the distance between consecutive crests?", "Frequency", "Amplitude", "Wavelength", "Velocity", 2, "Wavelength (λ) measures physical distance between identical phases of adjacent wave cycles."));
     list.add(_q("Physics", "What is the SI unit of torque?", "Newton", "Joule", "Newton-meter", "Watt", 2, "Torque is force cross radius, measured in Newton-meters (N·m)."));
     list.add(_q("Physics", "Which law states current entering junction equals current leaving it?", "Kirchhoff's Current Law", "Kirchhoff's Voltage Law", "Ohm's Law", "Tesla's Law", 0, "Kirchhoff's First Law (KCL) represents conservation of charge at nodes (Current in = Current out)."));
-    list.add(_q("Physics", "What thermodynamic cycle is defined as having the maximum theoretical efficiency?", "Carnot Cycle", "Diesel Cycle", "Rankine Cycle", "Haber Cycle", 0, "The Carnot cycle uses reversible isothermal and adiabatic lines to define maximum thermal efficiency."));
+    list.add(_q("Physics", "What thermodynamic cycle is defined as having the maximum theoretical efficiency?", "Carnot Cycle", "Diesel Cycle", "Rankine Cycle", "Haber Cycle", 0, "The Carnot cycle uses reversible isothermal and adiabatic lines to define maximum theoretical efficiency."));
     list.add(_q("Physics", "Which temperature scale starts at absolute zero with identical degree steps to Celsius?", "Fahrenheit", "Kelvin", "Romer", "Rankine", 1, "The Kelvin scale starts at OK (-273.15 °C) and is the absolute thermodynamic temperature scale."));
     list.add(_q("Physics", "What device converts mechanical rotation coil energy into electric current?", "Motor", "Generator", "Transformer", "Resistor", 1, "Electric generators utilize electromagnetic induction (Faraday's Law) to produce electricity."));
     list.add(_q("Physics", "In optics, absolute internal reflection occurs when angle of incidence exceeds:", "Critical Angle", "Refractive Angle", "Brewster Angle", "Normal Angle", 0, "Total internal reflection (TIR) occurs when ray hits boundary of lower-index media past the critical angle."));
@@ -340,15 +340,16 @@ class QuestionBank {
       final force = i * 2 + 10;
       final area = i % 5 + 2;
       final pressure = force ~/ area;
+
       switch (i % 5) {
         case 0:
           list.add(_q("Physics", "Calculate the hydrostatic pressure under a force of $force N applied uniformly across $area m²?", "$pressure Pa", "${pressure + 5} Pa", "${pressure - 3} Pa", "${pressure * 2} Pa", 0, "Pressure = Force / Area. $force / $area = $pressure Pa."));
           break;
         case 1:
-          list.add(_q("Physics", "What is the total resistance of two resistors ($i Ω and $i Ω) wired in series?", "${i * 2} Ω", "$i Ω", "${i / 2} Ω", "None", 0, "Series resistance is additive: R_total = R1 + R2 = $i + $i = ${i * 2} Ω."));
+          list.add(_q("Physics", "What is the total resistance of two resistors ($i Ω and $i Ω) wired in series?", "${i * 2} Ω", "$i Ω", "${i ~/ 2} Ω", "None", 0, "Series resistance is additive: R_total = R1 + R2 = $i + $i = ${i * 2} Ω."));
           break;
         case 2:
-          list.add(_q("Physics", "What is the equivalent resistance of two resistors ($i Ω and $i Ω) wired in parallel?", "${i / 2} Ω", "${i * 2} Ω", "$i Ω", "None", 0, "Parallel resistance: 1/Rp = 1/R1 + 1/R2 = 2/$i, giving Rp = $i / 2 Ω."));
+          list.add(_q("Physics", "What is the equivalent resistance of two resistors ($i Ω and $i Ω) wired in parallel?", "${i ~/ 2} Ω", "${i * 2} Ω", "$i Ω", "None", 0, "Parallel resistance: 1/Rp = 1/R1 + 1/R2 = 2/$i, giving Rp = $i / 2 Ω."));
           break;
         case 3:
           list.add(_q("Physics", "Calculate the velocity of a wave with a frequency of 10 Hz and wavelength of $area m?", "${10 * area} m/s", "10 m/s", "$area m/s", "None", 0, "Velocity is frequency multiplied by wavelength: v = f * λ = 10 * $area = ${10 * area} m/s."));
@@ -413,7 +414,7 @@ class QuestionBank {
     // Add 50 dynamic Chemistry questions to reach 100
     for (var i = 1; i <= 50; i++) {
       final h3o = i % 5 + 2;
-      
+
       switch (i % 5) {
         case 0:
           list.add(_q("Chemistry", "What is the pH of a strong acid solution with a hydronium concentration of 1.0 * 10⁻$h3o M?", "$h3o", "${14 - h3o}", "${h3o + 2}", "None", 0, "By definition: pH = -log10[H3O+] = -log10(10⁻$h3o) = $h3o."));

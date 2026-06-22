@@ -1,5 +1,0 @@
-- name: Build APK
-  run: |
-    cd flutter_project
-    flutter pub get
-    flutter build apk --release --verbose
