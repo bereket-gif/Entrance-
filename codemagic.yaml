@@ -6,17 +6,17 @@ workflows:
     environment:
       java: 17
     scripts:
-      - name: Build with System Gradle
+      - name: Super Build
         script: |
-          # 1. Delete all the broken local gradle files
+          # 1. Delete everything that is broken
           rm -rf gradle .gradle gradlew gradlew.bat
           
-          # 2. Use the system's global gradle to build directly
-          # We use --no-daemon to prevent memory issues on mobile builds
-          gradle assembleDebug --no-daemon
+          # 2. Build the app using the system's professional Gradle
+          # We target the ':app' module specifically
+          gradle :app:assembleDebug --no-daemon
     artifacts:
       - "**/build/outputs/apk/debug/*.apk"
     publishing:
       email:
         recipients:
-          - bereket.wmicheal.g@gmail.COM
+          - bereket.wmicheal.g@gmail.com
