@@ -1,0 +1,20 @@
+workflows:
+  native-android-build:
+    name: Entrance Android Build
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      java: 17
+    scripts:
+      - name: Set permissions
+        script: | 
+          chmod +x gradlew
+      - name: Build Android APK
+        script: | 
+          ./gradlew assembleDebug
+    artifacts:
+      - app/build/outputs/apk/debug/*.apk
+    publishing:
+      email:
+        recipients:
+          - bereket.wmicheal.g@gmail.COM
