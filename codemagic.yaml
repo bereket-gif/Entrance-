@@ -23,4 +23,4 @@ workflows:
     publishing:
       email:
         recipients:
-          - YOUR_EMAIL_HERE@GMAIL.COM
+          - bereket.wmicheal.g@gmail.COM
