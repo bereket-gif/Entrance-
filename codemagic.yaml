@@ -6,14 +6,14 @@ workflows:
     environment:
       java: 17
     scripts:
-      - name: Repair and Generate Gradle Wrapper
+      - name: Build with System Gradle
         script: |
-          # This use the system gradle to fix your broken project files
-          gradle wrapper --gradle-version 8.5
-          chmod +x gradlew
-      - name: Build Android APK
-        script: | 
-          ./gradlew assembleDebug
+          # 1. Delete all the broken local gradle files
+          rm -rf gradle .gradle gradlew gradlew.bat
+          
+          # 2. Use the system's global gradle to build directly
+          # We use --no-daemon to prevent memory issues on mobile builds
+          gradle assembleDebug --no-daemon
     artifacts:
       - "**/build/outputs/apk/debug/*.apk"
     publishing:
