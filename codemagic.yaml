@@ -6,17 +6,16 @@ workflows:
     environment:
       java: 17
     scripts:
-      - name: Super Build
+      - name: Final Build
         script: |
-          # 1. Delete everything that is broken
+          # 1. Delete the broken local files completely
           rm -rf gradle .gradle gradlew gradlew.bat
           
-          # 2. Build the app using the system's professional Gradle
-          # We target the ':app' module specifically
-          gradle :app:assembleDebug --no-daemon
+          # 2. Use the professional Gradle installed on the server
+          gradle assembleDebug --no-daemon
     artifacts:
       - "**/build/outputs/apk/debug/*.apk"
     publishing:
       email:
         recipients:
-          - bereket.wmicheal.g@gmail.com
+          - bereket.wmicheal.g@gmail.COM
